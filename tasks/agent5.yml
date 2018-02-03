@@ -1,6 +1,7 @@
 ---
 - name: Create datadog directory
-  file: dest=/etc/dd-agent state=directory
+  file: dest=/etc/dd-agent '{{ datadog_user }}' '{{ datadog_group }}' state=directory
+  become: yes
 
 - name: Create main Datadog agent configuration file
   template:
