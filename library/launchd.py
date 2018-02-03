@@ -18,7 +18,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
-
 DOCUMENTATION = '''
 module: launchd
 author:
@@ -117,6 +116,8 @@ def main():
     launch = module.get_bin_path('launchctl', True)
     service = module.params['name']
     action = module.params['state']
+    print service
+    print action
     rc = 0
     out = err = ''
     result = {
@@ -191,5 +192,5 @@ def main():
 
     module.exit_json(**result)
 
-if __name__ == 'main':
+if __name__ == '__main__':
     main()
