@@ -1,6 +1,6 @@
 ---
 - name: Create datadog directory
-  file: dest=/etc/dd-agent owner='{{ datadog_user }}' group='{{ datadog_group }}' state=directory
+  file: dest=/etc/dd-agent owner='{{ datadog_user }}' state=directory
   become: yes
 
 - name: Create main Datadog agent configuration file
@@ -8,7 +8,6 @@
     src: datadog.conf.j2
     dest: /etc/dd-agent/datadog.conf
     owner: '{{ datadog_user }}'
-    group: '{{ datadog_group }}'
   notify: restart datadog-agent
 
 # DEPRECATED: Remove specific handling of the process check for next major release
@@ -33,6 +32,5 @@
     src: checks.yaml.j2
     dest: /etc/dd-agent/conf.d/{{ item }}.yaml
     owner: '{{ datadog_user }}'
-    group: '{{ datadog_group }}'
   with_items: '{{ datadog_checks|list }}'
   notify: restart datadog-agent
