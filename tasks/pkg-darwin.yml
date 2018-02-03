@@ -1,0 +1,5 @@
+---
+- homebrew_cask:
+    name: datadog-agent
+    state: present
+    update_homebrew: yes
