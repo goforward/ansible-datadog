@@ -34,3 +34,7 @@
     owner: '{{ datadog_user }}'
   with_items: '{{ datadog_checks|list }}'
   notify: restart datadog-agent
+
+- name: Create plist file on startup
+  command: cp '/opt/datadog-agent/etc/com.datadoghq.agent.plist' /Library/LaunchDaemons
+  become: yes
