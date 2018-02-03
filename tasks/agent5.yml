@@ -16,6 +16,10 @@
   when: datadog_process_checks is defined
   notify: restart datadog-agent
 
+- name: Create plist file on startup
+  command: cp '/opt/datadog-agent/etc/com.datadoghq.agent.plist' /Library/LaunchDaemons
+  become: yes
+
 - debug: 'msg="[DEPRECATION NOTICE] Using `datadog_process_checks` is deprecated, use `process` under `datadog_checks` instead"'
   when: datadog_process_checks is defined
 
