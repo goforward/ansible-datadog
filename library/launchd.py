@@ -183,7 +183,7 @@ def main():
         if do is not None:
             result['changed'] = True
             if not module.check_mode:
-                rc, out, err = module.run_command('%s %s %s %s' % (launch, do, service))
+                rc, out, err = module.run_command('%s %s %s' % (launch, do, service))
         if rc != 0:
             msg="Unable to %s service %s: %s" % (do, service,err)
             if not found:
