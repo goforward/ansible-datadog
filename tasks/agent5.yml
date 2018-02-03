@@ -1,4 +1,7 @@
 ---
+- name: Create datadog directory
+  file: dest=/etc/dd-agent state=directory
+
 - name: Create main Datadog agent configuration file
   template:
     src: datadog.conf.j2
