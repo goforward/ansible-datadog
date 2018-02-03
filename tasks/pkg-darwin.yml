@@ -1,4 +1,4 @@
 ---
 - homebrew_cask:
-    name: Pour datadog-agent from homebrew cask
+    name: datadog-agent
     state: present
